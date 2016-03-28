@@ -9,9 +9,11 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var usersView = require('./routes/usersView');
 var password = require('./routes/password');
 var funHelper = require('./routes/helpers');
 var mangas = require('./routes/mangas');
+var mangasView = require('./routes/mangasView');
 require('dotenv').config({
     silent: true
 });
@@ -69,41 +71,41 @@ router.route('/logout')
 
 // Get the forgotten password page
 router.route('/forgot')
-  .get(password.getForgot)
-  .post(password.postForgot);
+  .get(password.getForgot);
+  //.post(password.postForgot);
 
 // Get the reset password page
 router.route('/reset')
-  .get(password.getReset)
-  .post(password.postReset);
+  .get(password.getReset);
+  //.post(password.postReset);
 
 // Get the registration page
 router.route('/signup')
-  .get(users.getSignUp)
+  .get(usersView.getSignUp)
   .post(users.createUser);
 
 // Get User Profile
 router.route('/user/:user')
-  .get(funHelper.isAuthenticated, users.getUserProfile);
+  .get(funHelper.isAuthenticated, usersView.getUserProfile);
 
 // Update User Account
 router.route('/user/:user/update')
-  .get(funHelper.isAuthenticated, users.getUpdateUser)
+  .get(funHelper.isAuthenticated, usersView.getUpdateUser)
   .post(funHelper.isAuthenticated, users.updateUser);
 
 // Delete User Account
 router.route('/user/:user/delete')
-  .get(funHelper.isAuthenticated, users.getDeleteUser)
+  .get(funHelper.isAuthenticated, usersView.getDeleteUser)
   .post(funHelper.isAuthenticated, users.deleteUser);
 
 // Create New Manga
 router.route('/user/:user/new')
-  .get(funHelper.isAuthenticated, mangas.getCreateManga)
+  .get(funHelper.isAuthenticated, mangasView.getCreateManga)
   .post(funHelper.isAuthenticated, mangas.createManga);
 
 // Update Manga
 router.route('/user/:user/:manga')
-  .get(funHelper.isAuthenticated, mangas.getUpdateManga)
+  .get(funHelper.isAuthenticated, mangasView.getUpdateManga)
   .post(funHelper.isAuthenticated, mangas.updateManga);
 
 // catch 404 and forward to error handler

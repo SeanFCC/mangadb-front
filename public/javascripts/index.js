@@ -160,7 +160,6 @@ function getUserInfo() {
     };
 
     $.ajax(settings).done(function (response) {
-        console.log(user);
         var userInfo = response.data[0];
         var userName = '<h4>Full name: ' +
             window.s.titleize(userInfo.firstname) + ' ' +
@@ -207,7 +206,7 @@ function oneUp(info) {
         }
     };
 
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function () {
         // Update chapter number in place
         userMangas[mangaTitle].chapter = newChapter;
         $(mangaClass).text(newChapter); // updates chapter for all catagories
@@ -237,7 +236,7 @@ function delManga(info) {
     };
 
     // When the DEL request is done, delete from DOM
-    $.ajax(settings).done(function (response) {
+    $.ajax(settings).done(function () {
         $(mangaClass).remove();
     });
 }

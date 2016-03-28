@@ -4,25 +4,8 @@
  */
 
 'use strict';
-var request = require('request');
 var funHelper = require('./helpers');
 var sess;
-
-/* New Manga Handling
- * The following code handles displaying and API call method
- * for manga creation form.
- */
-
-/* Displays Manga Creation Form */
-exports.getCreateManga = function (req, res) {
-    sess = req.session;
-    sess.url = '/user/' + sess.username;
-    sess.title = 'MangaDB: ' + sess.user;
-    sess.api = process.env.API;
-    sess.button = 'Create Manga';
-    sess.header = 'Create New Manga';
-    res.render('editManga', funHelper.jadeObj(sess, req));
-};
 
 /* Creates New Manga */
 exports.createManga = function (req, res) {
@@ -36,36 +19,7 @@ exports.createManga = function (req, res) {
         },
         form: funHelper.mangaObj(req.body)
     };
-    request(options, function (error, response, body) {
-        if (error) {
-            throw new Error(error);
-        }
-        if (typeof body === 'string') {
-            body = JSON.parse(body);
-        }
-        if (body.success === false) {
-            funHelper.newUserMsg(req, res, body);
-        } else {
-            req.flash('success', body.message);
-            res.redirect(sess.url);
-        }
-    });
-};
-
-/* Update Manga Handling
- * The following code handles displaying and API call method
- * for manga update form.
- */
-
-/* Displays Manga Update Form */
-exports.getUpdateManga = function (req, res) {
-    sess = req.session;
-    sess.url = '/user/' + sess.username;
-    sess.title = 'MangaDB: ' + sess.user;
-    sess.api = process.env.API;
-    sess.button = 'Update Manga';
-    sess.header = 'Update Manga Information';
-    res.render('editManga', funHelper.jadeObj(sess, req));
+    funHelper.makeRequest(options, req, res, sess.url);
 };
 
 /* Updates Manga */
@@ -84,19 +38,6 @@ exports.updateManga = function (req, res) {
         form: funHelper.mangaObj(req.body)
     };
 
-    request(options, function (error, response, body) {
-        if (error) {
-            throw new Error(error);
-        }
-        if (typeof body === 'string') {
-            body = JSON.parse(body);
-        }
-        if (body.success === false) {
-            funHelper.newUserMsg(req, res, body);
-        } else {
-            req.flash('success', body.message);
-            res.redirect(sess.url);
-        }
-    });
+    funHelper.makeRequest(options, req, res, sess.url);
 
 };

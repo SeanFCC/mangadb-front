@@ -1,8 +1,10 @@
 extends layout
 block content
+  .container
     section.jumbotron.center-text.transparent
+      i.fa.fa-5x.fa-paint-brush
       h1 MangaDB
-      h2 Track your personal manga collection.
+      h3 Track your personal manga collection.
       if !user
         button#btn-hide.btn.btn-success(type='button', onclick="window.location.href='/signup'") Create account
     main.main.opacity
@@ -18,10 +20,10 @@ block content
             h3 Site Agnostic
             p
               | Whether you have the physical copy or read the manga online, there is a site where you can read the latest chapter. While no manga is hosted here, you are able to keep any link to the manga series from any of the popular sites. This means you
-              | can have manga from different sites onyour collection.
+              | can have manga from different sites on your collection.
           .col-sm-4.col-lg-4
             i.fa.fa-twitter.fa-5x
             h3 Share with friends
             p
-              | Do you feel like sharing a particular manga that youa re keeping track with some frends? You can quickly share with a link via twitter.
+              | Do you feel like sharing a particular manga that you are keeping track with some frends? You can quickly share with a link via twitter.
       section#push

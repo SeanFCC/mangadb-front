@@ -2,7 +2,7 @@ $body-bg: #c1bdba
 $form-bg: #13232f
 $white: white
 
-$main: #c83636
+$main: #c0392b
 $main-light: lighten($main, 5%)
 $main-dark: darken($main, 5%)
 
@@ -15,7 +15,7 @@ $bold: 600
 $br: 4px
 $size: 100%
 $text-color: lightgrey
-$font-stack: "Titillium Web", sans-serif
+$font-stack: 'Fira Sans', sans-serif
 
 html
   height: 100%
@@ -29,12 +29,11 @@ html
 body
   position: relative
   margin: 0
-  padding-bottom: 6rem
+  padding-bottom: 3rem
   min-height: 100%
-  font-family: "Helvetica Neue", Arial, sans-serif
+  font-family: $font-stack
 
 .err:after
-  background-image: url(../images/kaneki1.jpg)
   content: ""
   display: block
   position: absolute
@@ -55,14 +54,13 @@ body
   position: absolute
   top: 0
   left: 0
-  
+
 .main:after
   content: ""
   display: block
   position: absolute
   top: 0
   left: 0
-  background-image: url(../images/kaneki.jpg)
   width: 100%
   height: 100%
   opacity: 0.5
@@ -79,16 +77,12 @@ body
   top: 0
   left: 0
 
-.main
-  padding-top: 25px
-  margin-top: 20px
-
 .main h1
   margin-top: 0
 
 footer
   background-color: #222222
-  color: LightGray
+  color: $white
   position: absolute
   text-align: center
   width: 100%
@@ -96,7 +90,7 @@ footer
   bottom: 0
   left: 0
   padding-top: 10px
-  font-family: "Helvetica Neue", Arial, sans-serif
+  font-family: $font-stack
 
 .navbar
   position: relative
@@ -104,29 +98,33 @@ footer
 .center-text
   text-align: center
 
+.row
+  padding: 20px
+
 .fa-bolt
-  color: Yellow
+  color: #f1c40f
 
 .fa-globe
-  color: Green
+  color: #40d47e
 
 .fa-twitter
-  color: LightSkyBlue
+  color: #3498db
+
+.fa-paint-brush
+  margin-bottom: 20px
 
 a
   color: #c83636
 
 .jumbotron
   position: relative
-  padding-top: 5px
-  padding-bottom: 25px
+  padding: 20px
 
 #push
   padding-bottom: 50px
 
 .opacity
-  background: rgba(0, 0, 25, 0.7)
-  color: LightGray
+  color: black
 
 .transparent
   background: rgba(200, 54, 54, 0)
@@ -143,7 +141,7 @@ a
   border-radius: $br
   box-shadow: 0 4px 10px 4px rgba($form-bg, 0.3)
   color: white
-  
+
 .manga-panel
   background-color: Gray
   opacity: 0.9
@@ -248,9 +246,10 @@ h4
   color: $white
 h1
   text-align: center
-  color: $white
+  color: $main
   font-weight: $thin
-  margin: 0 0 40px
+  font-size: 45px !important // Needs fixed so we don't need to use !important
+  margin: 0 0 10px
 
 input, textarea
   font-size: 22px
@@ -376,21 +375,21 @@ section a
   color: #3596e0
   left: initial
   font-size: 14px
-  
+
 td
   overflow: hidden
   word-break: normal
-    
+
 #plot
   margin-left: 1%
-  
+
 .img-container
   height: 400
   width: 100%
-  
+
 #img
   display: block
   margin: 0 auto
-  
+
 ul
   color: $white
